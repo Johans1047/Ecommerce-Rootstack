@@ -31,8 +31,8 @@ export default function Header() {
                                 <a href="/commerce" className="px-2 py-1 rounded hover:bg-neutral-200 active:bg-neutral-300 duration-150">Comercio</a>
                                 <a href="/about-us" className="px-2 py-1 rounded hover:bg-neutral-200 active:bg-neutral-300 duration-150">Acerca de nosotros</a>
                             </nav>
-                            <div id="signup-container">
-                                <a href="/login" className="rounded-lg px-4 py-2 bg-voyage-500 hover:bg-voyage-600 active:bg-voyage-700 text-white duration-150">Inicia sesión</a>
+                            <div id="user-flow-container">
+                                <a href="/users" className="rounded-lg px-4 py-2 bg-voyage-500 hover:bg-voyage-600 active:bg-voyage-700 text-white duration-150">Inicia sesión</a>
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import FloatingAnchor from "../components/FloatingAnchor";
+
 export default function UserFlow() {
     const [currentForm, setCurrentForm] = useState("login");
     const [passVisible, setPassVisible] = useState(false);
@@ -36,6 +38,7 @@ export default function UserFlow() {
                         </div>
                     </div>
                 </form>
+                <FloatingAnchor href="/" bi="bi-house-fill" title="Ir a inicio"/>
             </main>
         );
     } else if (currentForm == "signup") {
@@ -83,6 +86,7 @@ export default function UserFlow() {
                     </div>
                     </div>
                 </form>
+                <FloatingAnchor href="/" bi="bi-house-fill" title="Ir a inicio"/>
             </main>
         );
     }

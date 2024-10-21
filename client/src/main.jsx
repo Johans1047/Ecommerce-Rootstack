@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./views/Home";
 
 import "./styles/globals.css";
+import "bootstrap-icons/font/bootstrap-icons.min.css";
 
 const router = createBrowserRouter([
     {

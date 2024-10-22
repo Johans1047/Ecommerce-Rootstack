@@ -13,20 +13,20 @@ export async function POST(request) {
     console.log(`${fullName} || ${email} || ${pass} || ${repeatPass}`);
 
     if(fullName.trim() == "") {
-        return new Response("Name cannot be empty!", {status: 400});
+        return new Response("¡El nombre no puede estar vacío!", {status: 400});
     }
     if(email.trim() == "") {
-        return new Response("Email cannot be empty!", {status: 400});
+        return new Response("¡El correo electrónico no puede estar vacío!", {status: 400});
     }
     if(pass.trim() == "") {
-        return new Response("Password cannot be empty!", {status: 400});
+        return new Response("¡La contraseña no puede estar vacía!", {status: 400});
     }
     if(repeatPass.trim() == "") {
-        return new Response("We need to double check your password!", {status: 400});
+        return new Response("¡Necesitamos confirmar tu contraseña!", {status: 400});
     }
 
     if(pass != repeatPass) {
-        return new Response("Passwords do not match!", {status: 400}); 
+        return new Response("¡Las contraseñas no coinciden!", {status: 400}); 
     }
 
     try {
@@ -35,7 +35,7 @@ export async function POST(request) {
         const existingUser = await db.all("SELECT 1 FROM USERS WHERE email = ?", [email]);
 
         if(existingUser.length > 0 ) {
-            return new Response("A user already exists with this email!", {status: 400}) 
+            return new Response("¡Ya existe un usuario con este correo electrónico!", {status: 400}) 
         }
 
         const num = uuid4();
@@ -47,9 +47,9 @@ export async function POST(request) {
             [num, fullName, email, hash]
         );
 
-        return new Response("User created successfully!", {status: 201});
+        return new Response("¡Usuario creado con éxito!", {status: 201});
 
     } catch(error) {
-        return new Response("An error ocurred while trying to create user. " + error, {status: 500});
+        return new Response("Ocurrió un error al intentar crear el usuario. " + error, {status: 500});
     }
 }

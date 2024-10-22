@@ -1,21 +1,52 @@
-"use client";
+'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 
 const SearchDiv = ({
-  imageUrl = "../../public/images/400.png",
+  imageUrl = "/images/400.png",
   title = "Explora Panama",
   description = "Descubre los mejores destinos y experiencias para tu próximo viaje",
   searchPlaceholder = "¿A dónde quieres ir?",
   onSearch = (value) => console.log('Búsqueda:', value)
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSearch = (e) => {
-    const value = e.target.value;
-    setSearchTerm(value);
-    onSearch(value);
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    
+    if (!searchTerm.trim()) {
+      setSearchResults([]);
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(`/api/search?q=${encodeURIComponent(searchTerm.trim())}` );
+      
+      if (!response.ok) {
+        throw new Error('Error en la búsqueda');
+      }
+
+      const data = await response.json();
+      setSearchResults(data);
+      onSearch(data);
+    } catch (error) {
+      console.error('Error:', error);
+      setError('No se pudieron cargar los resultados');
+      setSearchResults([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value);
   };
 
   return (
@@ -28,7 +59,6 @@ const SearchDiv = ({
         />
         
         <div className="absolute inset-0 bg-black/50"></div>
-
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8">
           <div className="text-center w-full max-w-[90%] sm:max-w-[85%] md:max-w-3xl mx-auto">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 md:mb-4 text-white">
@@ -37,29 +67,64 @@ const SearchDiv = ({
             <p className="text-base sm:text-lg md:text-xl text-gray-100 mb-4 sm:mb-6 md:mb-8 max-w-xl mx-auto">
               {description}
             </p>
-            <div className="relative w-full max-w-[95%] sm:max-w-xl md:max-w-2xl mx-auto">
-              <div className="absolute inset-y-0 left-0 pl-3 sm:pl-4 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 sm:h-6 sm:w-6 text-gray-400" />
+            <form onSubmit={handleSearch} className="relative w-full max-w-[95%] sm:max-w-xl md:max-w-2xl mx-auto">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 sm:pl-4 flex items-center pointer-events-none">
+                  <Search className="h-5 w-5 sm:h-6 sm:w-6 text-gray-400" />
+                </div>
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={handleInputChange}
+                  className="block w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 
+                           bg-white/95 backdrop-blur-sm 
+                           border border-gray-300 rounded-lg 
+                           focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
+                           placeholder-gray-500 
+                           text-base sm:text-lg
+                           shadow-lg
+                           text-center"
+                  placeholder={searchPlaceholder}
+                  style={{
+                    textAlign: 'center',
+                    paddingLeft: '2.5rem',
+                    paddingRight: '2.5rem'
+                  }}
+                />
+                <button
+                  type="submit"
+                  className="absolute inset-y-0 right-0 px-4 flex items-center"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <div className="animate-spin h-5 w-5 border-2 border-blue-500 rounded-full border-t-transparent"></div>
+                  ) : (
+                    <span className="text-gray-500">Buscar</span>
+                  )}
+                </button>
               </div>
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={handleSearch}
-                className="block w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 
-                         bg-white/95 backdrop-blur-sm 
-                         border border-gray-300 rounded-lg 
-                         focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
-                         placeholder-gray-500 
-                         text-base sm:text-lg
-                         shadow-lg"
-                placeholder={searchPlaceholder}
-                style={{
-                  textAlign: 'center',
-                  paddingLeft: '2.5rem',
-                  paddingRight: '2.5rem'
-                }}
-              />
-            </div>
+              
+              {error && (
+                <div className="mt-2 text-red-500 text-sm">
+                  {error}
+                </div>
+              )}
+              
+              {searchResults.length > 0 && (
+                <div className="absolute z-10 w-full mt-2 bg-white rounded-lg shadow-xl max-h-96 overflow-y-auto">
+                  {searchResults.map((result) => (
+                    <div 
+                      key={result.num}
+                      className="p-4 hover:bg-gray-50 cursor-pointer border-b last:border-b-0"
+                    >
+                      <h3 className="font-medium text-gray-900">{result.name}</h3>
+                      <p className="text-sm text-gray-500">{result.description}</p>
+                      <p className="text-xs text-gray-400 mt-1">{result.location}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </form>
           </div>
         </div>
       </div>

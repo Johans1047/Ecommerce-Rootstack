@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
+import { AuthProvider } from '@/contexts/AuthContext';
 
 export const metadata = {
     title: "VoyageXplore",
@@ -24,7 +25,9 @@ export default function RootLayout({ children }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </head>
             <body className="high-contrast antialiased">
+              <AuthProvider>
                 <div id="root">{children}</div>
+              </AuthProvider>
             </body>
         </html>
     );

@@ -1,40 +1,40 @@
 "use client";
-
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Alerts from "@/components/Alerts"
-
+import { useAuth } from "@/contexts/AuthContext";
+import Alerts from "@/components/Alerts";
 import FloatingAnchor from "@/components/FloatingAnchor";
 
 export default function Login() {
     const router = useRouter();
-
+    const { login } = useAuth();
     const [passVisible, setPassVisible] = useState(false);
-
     const [errorMessage, setErrorMessage] = useState(null);
     const [successMessage, setSuccessMessage] = useState(null);
 
     const asyncSubmit = async (event) => {
         event.preventDefault();
-
         const formData = new FormData(event.target);
-
         try {
             const response = await fetch(event.target.action, {
                 method: "POST",
                 body: formData
             });
-
             const text = await response.text();
-
+            
             if (!response.ok) {
                 setErrorMessage(text);
                 setSuccessMessage(null);
-            }
-            else {
+            } else {
                 setSuccessMessage(text);
                 setErrorMessage(null);
-
+                
+                const authCheck = await fetch('/api/users/check-auth');
+                if (authCheck.ok) {
+                    const userData = await authCheck.json();
+                    await login(userData);
+                }
+                
                 router.push("/");
             }
         } catch (error) {

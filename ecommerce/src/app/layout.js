@@ -2,8 +2,8 @@ import "@/styles/globals.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 
 export const metadata = {
-    title: "Your App Title",
-    description: "Your app description",
+    title: "VoyageXplore",
+    description: "Conoce Panama",
     icons: {
       icon: [
         { url: '/images/favicon.png' , sizes: 'any', type: 'image/png'}

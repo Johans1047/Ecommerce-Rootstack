@@ -63,9 +63,9 @@ CREATE TABLE IF NOT EXISTS user_destinations (
 
 -- Insert team data
 INSERT INTO team (full_name, role, description, email, pfp_url ) VALUES
-('Diego Chan', 'Founder & CEO', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi blanditiis aut libero, aspernatur deserunt laborum deleniti voluptates unde cumque est.', 'diego.chan@utp.ac.pa', '/images/team/diego-chan.jpg'),
-('Jonathan Salazar', 'Lead Developer & CTO', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi blanditiis aut libero, aspernatur deserunt laborum deleniti voluptates unde cumque est.', 'jonathan.salazar1@utp.ac.pa', '/images/team/jonathan-salazar.jpg'),
-('Jhonathan Vargas', 'Lead Solutions Engineer', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi blanditiis aut libero, aspernatur deserunt laborum deleniti voluptates unde cumque est.', 'jhonathan.vargas@utp.ac.pa', '/images/team/jhonathan-vargas.jpg');
+('Diego Chan', 'Founder & CEO', 'Estudiante de Ingeniería de Software en la UTP. Apasionado por el emprendimiento y la innovación tecnológica. Lidera el desarrollo de esta plataforma para revolucionar el turismo en Panamá.', 'diego.chan@utp.ac.pa', '/images/team/diego-chan.jpg'),
+('Jonathan Salazar', 'Lead Developer & CTO', 'Estudiante de Ingeniería de Software en la UTP. Especializado en desarrollo web y arquitectura de software. Responsable de la infraestructura tecnológica del proyecto.', 'jonathan.salazar1@utp.ac.pa', '/images/team/jonathan-salazar.jpg'),
+('Jhonathan Vargas', 'Lead Solutions Engineer', 'Estudiante de Ingeniería de Software en la UTP. Enfocado en el diseño de soluciones eficientes y experiencias de usuario. Encargado de la optimización de procesos del sistema.', 'jhonathan.vargas@utp.ac.pa', '/images/team/jhonathan-vargas.jpg');
 
 -- Insert provinces data
 INSERT INTO provinces (name, description) VALUES 

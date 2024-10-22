@@ -1,0 +1,57 @@
+article {
+    position: relative;
+    width: 100%; 
+    transition: all 0.3s ease;
+    overflow: hidden; 
+    border-radius: 12px; 
+  }
+  
+  article img:first-child {
+    box-shadow: 0 60px 60px -60px rgba(202, 203, 211, 0.5);
+    border-radius: 12px;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  article img:last-child {
+    position: absolute;
+    border-radius: 12px;
+    width: 50%;
+    bottom: 25%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateY(25%);
+    transition: 0.3s ease;
+    opacity: 0;
+  }
+  
+  article:hover {
+    transform: perspective(250px) rotateX(4deg) translateY(-5%) translateZ(0);
+  }
+  
+  article::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 10%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0) 95%
+    );
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  article:hover::before {
+    opacity: 1;
+  }
+  
+  article:hover img:last-child {
+    opacity: 1;
+    transform: translateY(10%);
+  }
+  

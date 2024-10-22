@@ -1,6 +1,7 @@
+"use client";
 import { useState } from "react";
 
-import FloatingAnchor from "../components/FloatingAnchor";
+import FloatingAnchor from "@/components/FloatingAnchor";
 
 export default function UserFlow() {
     const [currentForm, setCurrentForm] = useState("login");

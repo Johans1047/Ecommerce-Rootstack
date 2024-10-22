@@ -1,27 +1,64 @@
-import Article from "@/components/Article";
+"use client";
+
+import { useEffect, useState } from "react";
 
 export default function Block() {
+    const [destinations, setDestinations] = useState([]);
+
+    useEffect(() => {
+        fetch("/api/destinations")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Error en la respuesta de red");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                setDestinations(data);
+            })
+            .catch((error) => {
+                console.error("Hubo un error al obtener los destinos", error);
+            });
+    }, []);
+
     return (
         <div className="m-10 flex items-center justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 w-4/5">
-                <div className="sm:col-start-2 sm:row-start-2 sm:col-span-6 sm:row-span-2 md:col-start-1 md:row-start-2 md:col-span-2 md:row-span-2 lg:col-start-1 lg:row-start-2 lg:col-span-2 lg:row-span-2 xl:col-start-1 xl:row-start-2 xl:col-span-2 xl:row-span-2">
-                    <Article />
-                </div>
-                <div className="sm:col-start-8 sm:row-start-2 sm:col-span-3 sm:row-span-1 md:col-start-1 md:row-start-4 md:col-span-1 md:row-span-1 lg:col-start-3 lg:row-start-2 lg:col-span-1 lg:row-span-1 xl:col-start-3 xl:row-start-2 xl:col-span-2 xl:row-span-2">
-                    <Article />
-                </div>
-                <div className="sm:col-start-8 sm:row-start-3 sm:col-span-3 sm:row-span-1 md:col-start-2 md:row-start-4 md:col-span-1 md:row-span-1 lg:col-start-3 lg:row-start-3 lg:col-span-1 lg:row-span-1 xl:col-start-1 xl:row-start-4 xl:col-span-1 xl:row-span-1">
-                    <Article />
-                </div>
-                <div className="sm:col-start-2 sm:row-start-4 sm:col-span-3 sm:row-span-1 md:col-start-1 md:row-start-5 md:col-span-1 md:row-span-1 lg:col-start-1 lg:row-start-4 lg:col-span-1 lg:row-span-1 xl:col-start-2 xl:row-start-4 xl:col-span-1 xl:row-span-1">
-                    <Article />
-                </div>
-                <div className="sm:col-start-5 sm:row-start-4 sm:col-span-3 sm:row-span-1 md:col-start-2 md:row-start-5 md:col-span-1 md:row-span-1 lg:col-start-2 lg:row-start-4 lg:col-span-1 lg:row-span-1 xl:col-start-3 xl:row-start-4 xl:col-span-1 xl:row-span-1">
-                    <Article />
-                </div>
-                <div className="sm:col-start-8 sm:row-start-4 sm:col-span-3 sm:row-span-1 md:col-start-1 md:row-start-6 md:col-span-2 md:row-span-1 lg:col-start-3 lg:row-start-4 lg:col-span-1 lg:row-span-1 xl:col-start-4 xl:row-start-4 xl:col-span-1 xl:row-span-1">
-                    <Article />
-                </div>
+                {destinations.map((destination) => (
+                    <DestinationCard key={destination.num} destination={destination} />
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function DestinationCard({ destination }) {
+    const [currentImage, setCurrentImage] = useState(destination.image_url);
+
+    const handleMouseEnter = () => {
+        setCurrentImage(destination.image_url2);
+    };
+
+    const handleMouseLeave = () => {
+        setCurrentImage(destination.image_url);
+    };
+
+    return (
+        <div 
+            className="bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 overflow-hidden"
+            onMouseEnter={handleMouseEnter} 
+            onMouseLeave={handleMouseLeave}
+        >
+            <img 
+                src={currentImage} 
+                alt={destination.name} 
+                className="w-full h-48 object-cover transition-opacity duration-300 ease-in-out" 
+            />
+            <div className="p-4">
+                <h2 className="text-lg font-semibold text-gray-800">{destination.name}</h2>
+                <p className="text-gray-600 mt-1">{destination.description}</p>
+                <p className="text-gray-500 mt-2">{destination.location}, {destination.province}</p>
+                <p className="text-indigo-600 font-bold mt-2">${destination.cost_per_day} / día</p>
             </div>
         </div>
     );

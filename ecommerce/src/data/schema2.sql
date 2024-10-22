@@ -2,9 +2,8 @@
 CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     num TEXT UNIQUE NOT NULL,
-    first_name TEXT NOT NULL,
-    last_name TEXT NOT NULL,
-    card_id TEXT UNIQUE NOT NULL,
+    full_name TEXT NOT NULL,
+    card_id TEXT UNIQUE,
     email TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
     is_confirmed BOOLEAN DEFAULT 0,

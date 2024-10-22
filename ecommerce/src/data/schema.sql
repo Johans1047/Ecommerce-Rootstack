@@ -11,6 +11,18 @@ CREATE TABLE IF NOT EXISTS users (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Create team table 
+CREATE TABLE IF NOT EXISTS team (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    full_name TEXT NOT NULL,
+    role TEXT NOT NULL,
+    description TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    pfp_url TEXT DEFAULT 'https://via.placeholder.com/64',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Create provinces table
 CREATE TABLE IF NOT EXISTS provinces (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -48,6 +60,12 @@ CREATE TABLE IF NOT EXISTS user_destinations (
     FOREIGN KEY (user_num) REFERENCES users (num),
     FOREIGN KEY (destination_num) REFERENCES destinations (num)
 );
+
+-- Insert team data
+INSERT INTO team (full_name, role, description, email, pfp_url ) VALUES
+('Diego Chan', 'Founder & CEO', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi blanditiis aut libero, aspernatur deserunt laborum deleniti voluptates unde cumque est.', 'diego.chan@utp.ac.pa', '/images/team/diego-chan.jpg'),
+('Jonathan Salazar', 'Lead Developer & CTO', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi blanditiis aut libero, aspernatur deserunt laborum deleniti voluptates unde cumque est.', 'jonathan.salazar1@utp.ac.pa', '/images/team/jonathan-salazar.jpg'),
+('Jhonathan Vargas', 'Lead Solutions Engineer', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi blanditiis aut libero, aspernatur deserunt laborum deleniti voluptates unde cumque est.', 'jhonathan.vargas@utp.ac.pa', '/images/team/jhonathan-vargas.jpg');
 
 -- Insert provinces data
 INSERT INTO provinces (name, description) VALUES 

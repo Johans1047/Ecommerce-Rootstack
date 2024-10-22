@@ -30,8 +30,12 @@ export async function POST(request) {
             return new Response("La contraseña es incorrecta.", {status: 401});
         }
 
-        setCookie("jssessid", user.id, 86400*30, "/");
-        return new Response("Usuario autenticado exitosamente!", {status: 200});
+        return new Response("User authenticated successfully!", {
+            status: 200,
+            headers: {
+                "Set-Cookie": setCookie("jssessid", user.num, 86400*30, "/"),
+            }
+        });
 
     } catch(error) {
         return new Response("Ha ocurrido un error al intentar autenticar al usuario. " + error, {status: 500});

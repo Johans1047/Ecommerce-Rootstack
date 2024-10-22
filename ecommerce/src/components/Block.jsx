@@ -55,10 +55,10 @@ function DestinationCard({ destination }) {
                 className="w-full h-48 object-cover transition-opacity duration-300 ease-in-out" 
             />
             <div className="p-4">
-                <h2 className="text-lg font-semibold text-gray-800">{destination.name}</h2>
-                <p className="text-gray-600 mt-1">{destination.description}</p>
-                <p className="text-gray-500 mt-2">{destination.location}, {destination.province}</p>
-                <p className="text-indigo-600 font-bold mt-2">${destination.cost_per_day} / día</p>
+                <h2 className="text-lg font-semibold text-black dark:text-white line-clamp-2">{destination.name}</h2>
+                <p className="text-gray-600 dark:text-gray-400 mt-1 line-clamp-3">{destination.description}</p>
+                <p className="text-gray-600 dark:text-gray-400 mt-2 line-clamp-1">{destination.location}, {destination.province}</p>
+                <p className="text-indigo-500 font-bold mt-2 line-clamp-1">${destination.cost_per_day} / día</p>
             </div>
         </div>
     );

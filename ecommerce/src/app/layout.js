@@ -1,12 +1,25 @@
 import "@/styles/globals.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 
+export const metadata = {
+    title: "Your App Title",
+    description: "Your app description",
+    icons: {
+      icon: [
+        { url: '/images/favicon.png' , sizes: 'any', type: 'image/png'}
+      ],
+      apple: [
+        { url: '/images/favicon.png', sizes: '180x180', type: 'image/png' },
+      ],
+    },
+  };
+
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <head>
-                <title>Your App Title</title>
-                <meta name="description" content="Your app description" />
+                <title>VoyageXplore</title>
+                <meta name="description" content="Conoce Panama" />
                 <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </head>

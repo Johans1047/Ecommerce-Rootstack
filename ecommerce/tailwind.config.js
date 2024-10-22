@@ -20,12 +20,7 @@ export default {
             },
         },
     },
-<<<<<<< HEAD:client/tailwind.config.js
     plugins: [
         require('daisyui'),
     ],
 }
-=======
-    plugins: [],
-}
->>>>>>> next-js:ecommerce/tailwind.config.js

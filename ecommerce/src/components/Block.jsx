@@ -1,8 +1,4 @@
-<<<<<<< HEAD:client/src/components/Block.jsx
-import Article from "../components/Article";
-=======
 import Article from "@/components/Article";
->>>>>>> next-js:ecommerce/src/components/Block.jsx
 
 export default function Block() {
     return (

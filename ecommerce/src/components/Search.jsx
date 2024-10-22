@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 const SearchDiv = ({
     imageUrl = "/images/search_bg.png",
-    title = "Explora Panama",
+    title = "Explora Panamá",
     description = "Descubre los mejores destinos y experiencias para tu próximo viaje",
     searchPlaceholder = "¿A dónde quieres ir?",
     onSearch = (value) => null

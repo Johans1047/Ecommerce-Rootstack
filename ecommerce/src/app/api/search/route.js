@@ -1,30 +1,30 @@
+import { NextResponse } from 'next/server';
 import connect from "@/lib/db";
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
 
 async function openDb() {
   return open({
-    filename: '../../data/database.db',
+    filename: '../../../data/db.sqlite3',
     driver: sqlite3.Database
   });
 }
 
-export default async function handler(req, res) {
-  if (req.method !== 'GET') {
-    return res.status(405).json({ message: 'Method not allowed' });
-  }
-
-  const { q } = req.query;
-
-  if (!q) {
-    return res.status(400).json({ message: 'Query parameter is required' });
-  }
-
+export async function GET(request) {
   try {
-    const db = await openDb();
+    const { searchParams } = new URL(request.url);
+    const q = searchParams.get('q');
+
+    if (!q) {
+      return NextResponse.json(
+        { message: 'Query parameter is required' },
+        { status: 400 }
+      );
+    }
+
+    const db = await connect();
     
     const destinations = await db.all(
-      `SELECT num, name, description, location, province, image_url FROM destinations 
+      `SELECT num, name, description, location, province, image_url 
+       FROM destinations 
        WHERE name LIKE ? OR 
              description LIKE ? OR 
              location LIKE ? OR
@@ -34,9 +34,13 @@ export default async function handler(req, res) {
     );
 
     await db.close();
-    res.status(200).json(destinations);
+    
+    return NextResponse.json(destinations);
   } catch (error) {
     console.error('Database error:', error);
-    res.status(500).json({ message: 'Error al buscar destinos' });
+    return NextResponse.json(
+      { message: 'Error al buscar destinos' },
+      { status: 500 }
+    );
   }
 }

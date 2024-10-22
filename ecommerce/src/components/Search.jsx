@@ -7,8 +7,7 @@ const SearchDiv = ({
   imageUrl = "/images/400.png",
   title = "Explora Panama",
   description = "Descubre los mejores destinos y experiencias para tu próximo viaje",
-  searchPlaceholder = "¿A dónde quieres ir?",
-  onSearch = (value) => console.log('Búsqueda:', value)
+  searchPlaceholder = "¿A dónde quieres ir?"
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);

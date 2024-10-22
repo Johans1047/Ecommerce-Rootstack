@@ -2,9 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { use, useState, useEffect } from "react";
-
+import Header from "@/components/Header";
 import { getCookie } from "@/lib/cookie";
-
 import FloatingAnchor from "@/components/FloatingAnchor";
 
 export default function Reservations({ params }) {
@@ -62,6 +61,8 @@ export default function Reservations({ params }) {
     }, [router]);
 
     return (
+        <>
+        <Header/>
         <main id="user-login" className="container mx-auto px-4 h-screen flex-center">
             <form method="post" action="/api/destinations/reservations/new" className="w-full max-w-lg" onSubmit={asyncSubmit}>
                 <input type="text" value={jssessid} name="user-num" id="user-num" readOnly hidden required />
@@ -94,5 +95,6 @@ export default function Reservations({ params }) {
             </form>
             <FloatingAnchor href="/commerce" bi="bi-arrow-return-left" title="Ir a comercio" />
         </main>
+        </>
     );
 }

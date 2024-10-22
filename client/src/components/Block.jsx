@@ -2,7 +2,7 @@ import Article from "../components/Article";
 
 export default function Block() {
     return (
-        <div className="grid grid-cols-11 grid-rows-[auto_repeat(4,225px)] gap-10 min-h-screen w-full">
+        <div className="grid grid-cols-11 grid-rows-[25px_repeat(3,225px)_25px] gap-10 min-h-screen w-full">
             <div className="col-start-2 row-start-2 col-span-6 row-span-2">
                 <Article />
             </div>

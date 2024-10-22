@@ -80,11 +80,11 @@ export default function Navbar() {
                                         {getUserInitials()}
                                     </button>
                                     {dropdownVisible && (
-                                        <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-30">
+                                        <div className="relative right-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-neutral-700 ring-1 ring-black ring-opacity-5 z-50"> {/* Ajustar z-50 */}
                                             <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                                                 <button
                                                     onClick={handleLogout}
-                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                                                    className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-neutral-600 w-full text-left"
                                                     role="menuitem"
                                                 >
                                                     Cerrar sesión

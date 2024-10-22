@@ -1,6 +1,10 @@
 // Article.js
 import React from 'react';
+<<<<<<< HEAD:client/src/components/Article.jsx
 import '../styles/Article.css';
+=======
+import '@/styles/Article.css';
+>>>>>>> next-js:ecommerce/src/components/Article.jsx
 
 export default function Article() {
     return (

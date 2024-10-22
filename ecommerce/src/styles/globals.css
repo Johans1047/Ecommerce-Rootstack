@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.flex-center {
+    @apply flex justify-center items-center;
+}
+
+.btn-primary {
+    @apply text-white bg-voyage-500 hover:bg-voyage-600 active:bg-voyage-700 duration-150;
+}

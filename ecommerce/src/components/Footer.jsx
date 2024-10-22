@@ -3,7 +3,7 @@ export default function Footer() {
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[12%_repeat(4,1fr)_12%] high-contrast">
             <div className="col-start-1 lg:col-start-2 m-3 p-2 flex flex-col items-center border-black dark:border-slate-800 border-t-[1px] sm:border-r-[1px] lg:border-t-0 lg:border-l-[1px] lg:border-l-0 text-sm">
                 <h4 className="text-lg font-semibold">Información de Contacto</h4>
-                <p className="mt-2"><span className="font-semibold">Teléfono:</span> +507 567-8590</p>
+                <p className="mt-2"><span className="font-semibold">Teléfono:</span>&nbsp;<a href="https://wa.me/50761234567">+507 6123-4567</a></p>
                 <p><span className="font-semibold">Email:</span> <a href="mailto:voyage@explore.com">voyage@explore.com</a></p>
             </div>
             <div className="m-3 p-2 flex flex-col items-center border-black dark:border-slate-800 border-t-[1px] sm:border-r-[1px] md:border-l-[1px] lg:border-t-0 lg:border-l-0 text-[13px]">

@@ -27,3 +27,11 @@ html[lang="es"], .high-contrast {
 .btn-primary {
     @apply text-white bg-voyage-500 hover:bg-voyage-600 active:bg-voyage-700 dark:bg-voyage-700 dark:hover:bg-voyage-600 dark:active:bg-voyage-500 duration-150;
 }
+
+.custom-img {
+    background-image: url('../../public/images/landing_bg.webp');
+}
+
+.custom-img2 {
+    background-image: url('../../public/images/landing_bg2.webp');
+}

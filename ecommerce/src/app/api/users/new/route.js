@@ -3,13 +3,14 @@ import {v4 as uuid4} from "uuid";
 import bcrypt from "bcrypt";
 
 export async function POST(request) {
-    const body = await request.text();
-    const params = new URLSearchParams(body);
+    const data = await request.formData();
 
-    const fullName = params.get("fullname");
-    const email = params.get("email");
-    const pass = params.get("pass");
-    const repeatPass = params.get("repeat-pass");
+    const fullName = data.get("full-name");
+    const email = data.get("email");
+    const pass = data.get("pass");
+    const repeatPass = data.get("repeat-pass");
+
+    console.log(`${fullName} || ${email} || ${pass} || ${repeatPass}`);
 
     if(fullName.trim() == "") {
         return new Response("Name cannot be empty!", {status: 400});
@@ -49,6 +50,6 @@ export async function POST(request) {
         return new Response("User created successfully!", {status: 201});
 
     } catch(error) {
-        return new Response("An error ocurred while trying to create user." + error, {status: 500});
+        return new Response("An error ocurred while trying to create user. " + error, {status: 500});
     }
 }

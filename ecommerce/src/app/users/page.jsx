@@ -46,7 +46,7 @@ export default function UserFlow() {
                     <div id="fields-container" className="grid gap-y-6">
                         <div className="w-full">
                             <label htmlFor="email" className="text-lg">Correo electrónico</label>
-                            <input type="email" name="email" id="email" autoComplete="email" className="w-full text-lg px-2 py-2 border border-neutral-200 rounded-sm focus:outline focus:outline-voyage-500 duration-150" placeholder="email@example.com" />
+                            <input type="email" name="email" id="email" autoComplete="email" className="w-full text-lg px-2 py-2 border mid-contrast-b rounded-sm focus:outline focus:outline-voyage-500 duration-150" placeholder="email@example.com" />
                         </div>
                         <div className="w-full">
                             <label htmlFor="pass" className="text-lg">
@@ -55,7 +55,7 @@ export default function UserFlow() {
                                     <i className={"bi bi-eye-fill duration-150 " + (passVisible ? " text-voyage-500" : "text-neutral-400")}></i>
                                 </button>
                             </label>
-                            <input type={passVisible ? "text" : "password"} name="pass" id="pass" autoComplete="current-password" className="w-full text-lg px-2 py-2 border border-neutral-200 rounded-sm focus:outline focus:outline-voyage-500 duration-150" placeholder="Elige una contraseña segura" />
+                            <input type={passVisible ? "text" : "password"} name="pass" id="pass" autoComplete="current-password" className="w-full text-lg px-2 py-2 border mid-contrast-b rounded-sm focus:outline focus:outline-voyage-500 duration-150" placeholder="Elige una contraseña segura" />
                         </div>
                         <div className="w-full">
                             <input type="submit" value="Iniciar sesión" className="w-full text-lg rounded-sm py-2 btn-primary" />
@@ -80,12 +80,12 @@ export default function UserFlow() {
                     <h1 className="text-3xl font-semibold text-center mb-6">Crea una cuenta</h1>
                     <div id="fields-container" className="grid gap-y-6">
                         <div className="w-full">
-                            <label htmlFor="fullname" className="text-lg">Nombre completo</label>
-                            <input type="text" name="fullname" id="fullname" autoComplete="name" className="w-full text-lg px-2 py-2 border border-neutral-200 rounded-sm focus:outline focus:outline-voyage-500 duration-150" placeholder="John Doe" required/>
+                            <label htmlFor="full-name" className="text-lg">Nombre completo</label>
+                            <input type="text" name="full-name" id="full-name" autoComplete="name" className="w-full text-lg px-2 py-2 border mid-contrast-b rounded-sm focus:outline focus:outline-voyage-500 duration-150" placeholder="John Doe" required/>
                         </div>
                         <div className="w-full">
                             <label htmlFor="email" className="text-lg">Correo electrónico</label>
-                            <input type="email" name="email" id="email" autoComplete="email" className="w-full text-lg px-2 py-2 border border-neutral-200 rounded-sm focus:outline focus:outline-voyage-500 duration-150" placeholder="email@example.com" required />
+                            <input type="email" name="email" id="email" autoComplete="email" className="w-full text-lg px-2 py-2 border mid-contrast-b rounded-sm focus:outline focus:outline-voyage-500 duration-150" placeholder="email@example.com" required />
                         </div>
                         <div className="w-full">
                             <label htmlFor="pass" className="text-lg">
@@ -94,7 +94,7 @@ export default function UserFlow() {
                                     <i className={"bi bi-eye-fill duration-150 " + (passVisible ? " text-voyage-500" : "text-neutral-400")}></i>
                                 </button>
                             </label>
-                            <input type={passVisible ? "text" : "password"} name="pass" id="pass" autoComplete="new-password" className="w-full text-lg px-2 py-2 border border-neutral-200 rounded-sm focus:outline focus:outline-voyage-500 duration-150" placeholder="Elige una contraseña segura" required/>
+                            <input type={passVisible ? "text" : "password"} name="pass" id="pass" autoComplete="new-password" className="w-full text-lg px-2 py-2 border mid-contrast-b rounded-sm focus:outline focus:outline-voyage-500 duration-150" placeholder="Elige una contraseña segura" required/>
                         </div>
                         <div className="w-full">
                             <label htmlFor="repeat-pass" className="text-lg">
@@ -103,7 +103,7 @@ export default function UserFlow() {
                                     <i className={"bi bi-eye-fill duration-150 " + (repeatPassVisible ? " text-voyage-500" : "text-neutral-400")}></i>
                                 </button>
                             </label>
-                            <input type={repeatPassVisible ? "text" : "password"} name="repeat-pass" id="repeat-pass" autoComplete="new-password" className="w-full text-lg px-2 py-2 border border-neutral-200 rounded-sm focus:outline focus:outline-voyage-500 duration-150" placeholder="Debe ser igual a tu contraseña" required/>
+                            <input type={repeatPassVisible ? "text" : "password"} name="repeat-pass" id="repeat-pass" autoComplete="new-password" className="w-full text-lg px-2 py-2 border mid-contrast-b rounded-sm focus:outline focus:outline-voyage-500 duration-150" placeholder="Debe ser igual a tu contraseña" required/>
                         </div>
                         <div className="w-full">
                             <input type="submit" value="Registrar" className="w-full text-lg rounded-sm py-2 btn-primary" />

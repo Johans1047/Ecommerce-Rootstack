@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
                 <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </head>
-            <body className="bg-white text-gray-800 antialiased">
+            <body className="high-contrast antialiased">
                 <div id="root">{children}</div>
             </body>
         </html>

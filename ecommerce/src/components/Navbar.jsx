@@ -19,7 +19,7 @@ export default function Navbar() {
     }, []);
     return (
         <>
-        <div id="header-navigation" className={"bg-white " + (navVisible ? "max-w-full" : "max-w-0") + " fixed top-0 right-0 z-20 lg:static overflow-hidden transition-all duration-300"}>
+        <div id="header-navigation" className={"high-contrast " + (navVisible ? "max-w-full" : "max-w-0") + " fixed top-0 right-0 z-20 lg:static overflow-hidden transition-all duration-300"}>
             <div id="navigation-container" className="border-l border-neutral-400 lg:border-none">
                 <div id="close-container" className="w-full flex lg:hidden justify-end">
                     <button onClick={() => setNavVisible(false)} className="p-1 block lg:hidden">

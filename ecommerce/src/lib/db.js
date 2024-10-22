@@ -3,10 +3,10 @@ import { open } from "sqlite";
 import path from "path";
 
 export default async function connect() {
-
+    const name = path.resolve(process.cwd(), "src", "data", "db.sqlite3");
+    console.log(name);
     return open({
-        filename: path.resolve(process.cwd(), "data", "database.db"),
+        filename: name,
         driver: sqlite3.Database
     });
-
 }

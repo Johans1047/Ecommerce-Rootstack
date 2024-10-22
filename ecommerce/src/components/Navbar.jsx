@@ -30,7 +30,7 @@ export default function Navbar() {
                     <nav id="header-navbar" className="flex flex-col lg:flex-row gap-6 my-8 lg:my-0">
                         <a href="/" className="px-2 py-1 rounded hover:bg-neutral-200 active:bg-neutral-300 duration-150">Inicio</a>
                         <a href="/commerce" className="px-2 py-1 rounded hover:bg-neutral-200 active:bg-neutral-300 duration-150">Comercio</a>
-                        <a href="/about-us" className="px-2 py-1 rounded hover:bg-neutral-200 active:bg-neutral-300 duration-150">Acerca de nosotros</a>
+                        <a href="/about" className="px-2 py-1 rounded hover:bg-neutral-200 active:bg-neutral-300 duration-150">Acerca de nosotros</a>
                     </nav>
                     <div id="user-flow-container">
                         <a href="/users" className="rounded-lg px-4 py-2 btn-primary">Inicia sesión</a>

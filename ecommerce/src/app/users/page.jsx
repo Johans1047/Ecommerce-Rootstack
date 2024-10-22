@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Alerts from "@/components/Alerts"
 
 import FloatingAnchor from "@/components/FloatingAnchor";
 
@@ -27,11 +28,11 @@ export default function UserFlow() {
             if(!response.ok) {
                 setErrorMessage(text);
                 setSuccessMessage(null);
-                return;
             }
-
-            setSuccessMessage(text);
-            setErrorMessage(null);
+            else {
+                setSuccessMessage(text);
+                setErrorMessage(null);
+            }
         }  catch(error) {
             setErrorMessage("An unexpected error occurred.");
         }
@@ -41,6 +42,8 @@ export default function UserFlow() {
     if (currentForm == "login") {
         return (
             <main id="user-login" className="container mx-auto px-4 h-screen flex-center">
+                {errorMessage && <Alerts type="error" message={errorMessage} />}
+                {successMessage && <Alerts type="success" message={successMessage} />}
                 <form method="post" action="/api/users/authenticate" className="w-full max-w-lg" onSubmit={asyncSubmit}>
                     <h1 className="text-3xl font-semibold text-center mb-6">Ingresa a tu cuenta</h1>
                     <div id="fields-container" className="grid gap-y-6">
@@ -76,6 +79,8 @@ export default function UserFlow() {
     } else if (currentForm == "signup") {
         return (
             <main id="user-signup" className="container mx-auto px-4 h-screen flex-center">
+                {errorMessage && <Alert type="error" message={errorMessage} />}
+                {successMessage && <Alert type="success" message={successMessage} />}
                 <form method="post" action="/api/users/new" className="w-full max-w-lg" onSubmit={asyncSubmit}>
                     <h1 className="text-3xl font-semibold text-center mb-6">Crea una cuenta</h1>
                     <div id="fields-container" className="grid gap-y-6">

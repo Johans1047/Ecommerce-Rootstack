@@ -29,7 +29,7 @@ export async function POST(request) {
             return new Response("Password is incorrect.", {status: 401});
         }
 
-        return new Response("", {status: 200});
+        return new Response("Logged successfully.", {status: 200});
 
     } catch(error) {
         return new Response("An error ocurred while trying to authenticate user. " + error, {status: 500});

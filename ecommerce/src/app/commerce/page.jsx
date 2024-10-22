@@ -14,7 +14,7 @@ export default function Commerce() {
 
     useEffect(() => {
         if (!getCookie("jssessid")) {
-            router.push("/users");
+            router.push("/users/login");
         }
     }, [router]);
 

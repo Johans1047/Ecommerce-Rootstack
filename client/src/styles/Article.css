@@ -27,7 +27,7 @@ article {
   }
   
   article:hover {
-    transform: perspective(250px) rotateX(10deg) translateY(-5%) translateZ(0);
+    transform: perspective(250px) rotateX(4deg) translateY(-5%) translateZ(0);
   }
   
   article::before {

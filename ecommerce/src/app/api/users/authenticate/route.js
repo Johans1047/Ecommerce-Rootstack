@@ -1,4 +1,5 @@
 import connect from "@/lib/db";
+import { setCookie } from "@/lib/cookie";
 import bcrypt from "bcrypt";
 
 export async function POST(request) {
@@ -29,7 +30,8 @@ export async function POST(request) {
             return new Response("Password is incorrect.", {status: 401});
         }
 
-        return new Response("Logged successfully.", {status: 200});
+        setCookie("jssessid", user.id, 86400*30, "/");
+        return new Response("User authenticated successfully!", {status: 200});
 
     } catch(error) {
         return new Response("An error ocurred while trying to authenticate user. " + error, {status: 500});

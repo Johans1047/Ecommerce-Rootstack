@@ -45,7 +45,7 @@ function DestinationCard({ destination }) {
 
     return (
         <div 
-            className="bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 overflow-hidden"
+            className="high-contrast rounded-lg shadow-lg dark:shadow-black transition-transform transform hover:scale-105 overflow-hidden"
             onMouseEnter={handleMouseEnter} 
             onMouseLeave={handleMouseLeave}
         >

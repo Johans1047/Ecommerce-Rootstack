@@ -11,7 +11,7 @@ export default function Parallax({ classString, title, content }) {
                     {title}
                 </div>
             </section>
-            <div className="w-full px-3 max-w-lg m-auto mb-14">
+            <div className="w-full px-5 max-w-lg m-auto mb-14">
                 <p className="mb-4 text-md sm:text-lg md:text-xl lg:text-2xl font-semibold">
                     {content}
                 </p>

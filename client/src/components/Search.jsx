@@ -51,6 +51,11 @@ const SearchDiv = ({
                          text-base sm:text-lg
                          shadow-lg"
                 placeholder={searchPlaceholder}
+                style={{
+                  textAlign: 'center',
+                  paddingLeft: '2.5rem',
+                  paddingRight: '2.5rem'
+                }}
               />
             </div>
           </div>

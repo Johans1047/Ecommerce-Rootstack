@@ -4,10 +4,11 @@ import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 
 const SearchDiv = ({
-  imageUrl = "/images/400.png",
+  imageUrl = "/images/search_bg.png",
   title = "Explora Panama",
   description = "Descubre los mejores destinos y experiencias para tu próximo viaje",
-  searchPlaceholder = "¿A dónde quieres ir?"
+  searchPlaceholder = "¿A dónde quieres ir?",
+  onSearch = (value) => null
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);

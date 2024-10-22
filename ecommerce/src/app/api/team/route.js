@@ -11,6 +11,6 @@ export async function GET(request) {
             }
         })
     } catch(error) {
-        return new Response("Ha ocurrido un error al intentar autenticar al usuario. " + error, {status: 500});
+        return new Response("Ha ocurrido un error al intentar extraer al equipo. " + error, {status: 500});
     }
 }

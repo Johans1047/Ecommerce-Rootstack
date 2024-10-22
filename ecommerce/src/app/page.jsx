@@ -14,7 +14,6 @@ export default function Home() {
         <Search />
         <Parallax classString="custom-img" title="Bienvenido a VoyageXplore" content={bienvenida}/>
         <Parallax classString="custom-img2" title="Diviértete con VoyageXplore" content={despedida}/>
-        <Block />
         <Footer />
         </>
     );

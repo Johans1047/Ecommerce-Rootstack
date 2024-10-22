@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 export default function MemberCard({name, role, description, profileUrl="/images/team/jonathan-salazar.jpg"}) {
     return (
-        <div className="w-full max-w-sm shadow shadow-black rounded flex flex-col items-center gap-4 high-contrast p-6">
+        <div className="w-full max-w-sm shadow shadow-black rounded flex flex-col items-center gap-4 high-contrast p-6 transition-transform transform hover:scale-105">
             <div className="h-32 aspect-square w-auto rounded-full flex-center overflow-hidden">
                 <img src={profileUrl} alt={name + "'s profile"} className="w-full h-full" />
             </div>

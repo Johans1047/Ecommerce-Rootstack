@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const SearchDiv = ({
     imageUrl = "/images/search_bg.png",
@@ -10,6 +11,7 @@ const SearchDiv = ({
     searchPlaceholder = "¿A dónde quieres ir?",
     onSearch = (value) => null
 }) => {
+    const router = useRouter();
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -47,6 +49,10 @@ const SearchDiv = ({
 
     const handleInputChange = (e) => {
         setSearchTerm(e.target.value);
+    };
+
+    const handleResultClick = (num) => {
+        router.push(`/commerce/reservations/${num}`);
     };
 
     return (
@@ -100,7 +106,15 @@ const SearchDiv = ({
                                     {searchResults.map((result) => (
                                         <div
                                             key={result.num}
-                                            className="p-4 hover:bg-gray-50 cursor-pointer border-b last:border-b-0"
+                                            className="p-4 hover:bg-gray-50 cursor-pointer border-b last:border-b-0 transition-colors duration-150"
+                                            onClick={() => handleResultClick(result.num)}
+                                            role="button"
+                                            tabIndex={0}
+                                            onKeyDown={(e) => {
+                                                if (e.key === 'Enter' || e.key === ' ') {
+                                                    handleResultClick(result.num);
+                                                }
+                                            }}
                                         >
                                             <h3 className="font-medium text-gray-900">{result.name}</h3>
                                             <p className="text-sm text-gray-500">{result.description}</p>
